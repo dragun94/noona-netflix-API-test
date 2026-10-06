@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111113">
+  <meta name="description" content="오늘의 인기 영화부터 취향에 맞는 장르까지, NOONA CINEMA에서 발견하세요.">
+  <title>NOONA CINEMA · 오늘의 영화 발견</title>
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/movie-row.css">
+  <link rel="stylesheet" href="css/components/movie-dialog.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#popular">영화 목록으로 바로가기</a>
+  <header class="header">
+    <a class="brand" href="./" aria-label="NOONA CINEMA 홈">NOONA<span>CINEMA</span></a>
+    <nav aria-label="주 메뉴"><a class="nav-link active" href="#popular">홈</a><a class="nav-link" href="#genres">장르별 영화</a><button class="nav-link" id="watchlist-button">내가 찜한 영화 <span id="watchlist-count">0</span></button></nav>
+    <button class="search-toggle" id="search-toggle" aria-label="영화 검색 열기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>영화 검색</span></button>
+  </header>
+  <main>
+    <section class="hero" id="hero" aria-label="오늘의 추천 영화">
+      <div class="hero-backdrop" id="hero-backdrop"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> YOUR NEXT FAVORITE MOVIE</p><p class="hero-kicker" id="hero-kicker">오늘, 어떤 영화 볼까?</p>
+        <h1 id="hero-title">좋은 영화가 기다리는 곳.</h1><div class="hero-meta" id="hero-meta"></div>
+        <p class="hero-overview" id="hero-overview">지금 모두가 이야기하는 영화부터 당신의 취향을 저격할 한 편까지. 새로운 이야기를 만나보세요.</p>
+        <div class="hero-actions"><button class="button button-primary" id="hero-details" disabled><span aria-hidden="true">ⓘ</span> 영화 자세히 보기</button><a class="button button-secondary" href="#popular">인기 영화 둘러보기 <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="hero-caption"><span class="live-dot"></span> 매일 새로운 영화, 새로운 발견</div>
+    </section>
+    <section class="search-panel content" id="search-panel" hidden>
+      <form id="search-form" role="search"><label for="search-input">찾고 싶은 영화가 있나요?</label><div class="search-field"><input id="search-input" type="search" placeholder="영화 제목을 입력하세요" maxlength="100" required><button class="button button-primary" type="submit">검색</button><button class="button button-secondary" id="search-close" type="button">닫기</button></div></form>
+      <div id="search-results" aria-live="polite"></div>
+    </section>
+    <section class="content collection" id="popular" aria-labelledby="popular-heading"><div class="collection-heading"><div><p class="eyebrow">THE TRENDING COLLECTION</p><h2 id="popular-heading">지금, 가장 사랑받는 영화</h2></div><span class="collection-note">취향의 시작은 여기서</span></div><div id="popular-rows"></div></section>
+    <section class="content collection genre-collection" id="genres" aria-labelledby="genre-heading"><div class="collection-heading"><div><p class="eyebrow">FIND YOUR MOOD</p><h2 id="genre-heading">오늘의 기분, 오늘의 장르</h2></div><span class="collection-note">당신의 취향을 찾아보세요</span></div><nav class="genre-links" id="genre-links" aria-label="장르 바로가기"></nav><div id="genre-rows"></div></section>
+  </main>
+  <footer class="content footer"><a class="brand" href="./">NOONA<span>CINEMA</span></a><p>당신의 다음 이야기를 발견하세요.</p><div class="footer-bottom"><span>영화 정보 및 이미지 제공: <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a><br>This product uses the TMDB API but is not endorsed or certified by TMDB.</span><span>© <span id="copyright-year"></span> NOONA CINEMA · Demo project</span></div></footer>
+  <dialog id="movie-dialog" class="movie-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="닫기">✕</button><div id="dialog-content"></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>

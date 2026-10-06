@@ -1,0 +1,11 @@
+{
+  "name": "noona-cinema",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vanilla HTML, CSS and JavaScript movie discovery demo",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
