@@ -5,7 +5,8 @@
   "routes": [
     { "src": "/api/tmdb", "dest": "/api/tmdb" },
     { "src": "/", "dest": "/index.html" },
-    { "src": "/(index\\.html|(?:css|js)/.*)", "dest": "/$1" },
+    { "src": "/(?!index\\.html$|(?:css|js)/).*", "status": 404 },
+    { "handle": "filesystem" },
     { "src": "/.*", "status": 404 }
   ]
 }

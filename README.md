@@ -35,7 +35,7 @@ Windows PowerShell에서 실행 정책 때문에 `npm`이 막히면 위와 같�
 - `api/tmdb.js`: Vercel Node.js 서버 함수, 요청 검증과 서버 환경변수 인증
 - `server.js`: 로컬 정적 파일 서버와 동일한 API 함수 연결
 - `vercel.json`: 순수 정적 사이트 설정 및 공개 경로 제한
-- `.vercelignore`: 배포 파일 제한 (`prompt.md`, 환경변수 파일, 백업, 테스트 등 제외)
+- `.vercelignore`: 비공개 파일 제외 (`prompt.md`, 환경변수 파일, 백업, 테스트 등); CSS·JS 폴더는 포함
 - `.env.example`: 비밀 값이 없는 환경변수 예시
 
 ## 영화 목록 기준

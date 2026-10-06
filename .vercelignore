@@ -1,11 +1,11 @@
-# Only browser assets, serverless functions and required configuration are uploaded.
-*
-!index.html
-!css/
-!css/**
-!js/
-!js/**
-!api/
-!api/**
-!package.json
-!vercel.json
+# Keep static asset directories available to Vercel's file discovery.
+# Server functions under api/ and required configuration remain included.
+.git/
+.vercel/
+.env*
+.design-backup/
+node_modules/
+tests/
+prompt.md
+README.md
+server.js
