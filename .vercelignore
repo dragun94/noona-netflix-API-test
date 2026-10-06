@@ -1,0 +1,11 @@
+# Only browser assets, serverless functions and required configuration are uploaded.
+*
+!index.html
+!css/
+!css/**
+!js/
+!js/**
+!api/
+!api/**
+!package.json
+!vercel.json

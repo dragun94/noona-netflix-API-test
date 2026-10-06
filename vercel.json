@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "routes": [
+    { "src": "/api/tmdb", "dest": "/api/tmdb" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(index\\.html|(?:css|js)/.*)", "dest": "/$1" },
+    { "src": "/.*", "status": 404 }
+  ]
+}

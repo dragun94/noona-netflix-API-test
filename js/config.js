@@ -1,5 +1,3 @@
-export const API_KEY = 'fc4518dd260326a82104ab03046ff869';
-export const API_BASE = 'https://api.themoviedb.org/3';
 export const IMAGE_BASE = 'https://image.tmdb.org/t/p/';
 export const GENRES = [
   { id: 28, name: '액션', subtitle: '심장을 뛰게 하는 순간들' },

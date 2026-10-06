@@ -7,12 +7,14 @@ test('month and year filters handle the year boundary without UTC date shifts', 
   assert.equal(localDate(new Date(2024,1,29)),'2024-02-29');
   const urls = [];
   const original = globalThis.fetch;
-  globalThis.fetch = async url => { urls.push(new URL(url)); return { ok:true, json:async () => ({results:[]}) }; };
+  globalThis.fetch = async url => { urls.push(new URL(url, 'http://localhost')); return { ok:true, json:async () => ({results:[]}) }; };
   return (async () => {
     try {
       const collections = popularCollections(date);
       await collections[2].load();
       await collections[3].load();
+      assert.equal(urls[0].pathname, '/api/tmdb');
+      assert.equal(urls[0].searchParams.get('endpoint'), '/discover/movie');
       assert.equal(urls[0].searchParams.get('primary_release_date.gte'),'2026-01-01');
       assert.equal(urls[1].searchParams.get('primary_release_date.lte'),'2026-01-01');
     } finally { globalThis.fetch = original; }

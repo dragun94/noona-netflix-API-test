@@ -1,11 +1,9 @@
-import { API_BASE, API_KEY } from '../config.js';
-
 const pending = new Map();
 const CACHE_TTL = 15 * 60 * 1000;
 
 export async function request(path, params = {}, { signal } = {}) {
-  const query = new URLSearchParams({ api_key: API_KEY, language: 'ko-KR', include_adult: 'false', ...params });
-  const url = `${API_BASE}${path}?${query}`;
+  const query = new URLSearchParams({ ...params, endpoint: path });
+  const url = `/api/tmdb?${query}`;
   const cacheKey = `noona:tmdb:${path}:${JSON.stringify(params)}`;
   try {
     const cached = JSON.parse(sessionStorage.getItem(cacheKey));
@@ -21,7 +19,7 @@ export async function request(path, params = {}, { signal } = {}) {
     try {
       const response = await fetch(url, { signal: controller.signal });
       if (!response.ok) {
-        if (response.status === 401) throw new Error('API 키를 확인해 주세요.');
+        if (response.status === 400) throw new Error('잘못된 영화 정보 요청입니다.');
         if (response.status === 429) throw new Error('요청이 많습니다. 잠시 후 다시 시도해 주세요.');
         throw new Error('영화 정보를 가져오지 못했습니다.');
       }

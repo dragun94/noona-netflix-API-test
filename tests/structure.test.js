@@ -13,6 +13,7 @@ test('page assets and JavaScript DOM targets match the unified layout', async ()
       if (entry.isDirectory()) await checkFolder(file);
       else if (file.endsWith('.js')) {
         const source = await readFile(file, 'utf8');
+        assert.doesNotMatch(source, /api_key|API_KEY|TMDB_TOKEN|api\.themoviedb\.org|Bearer/);
         for (const match of source.matchAll(/querySelector\(['"]#([\w-]+)['"]\)/g)) {
           assert.ok(ids.has(match[1]), `${file} refers to missing #${match[1]}`);
         }
